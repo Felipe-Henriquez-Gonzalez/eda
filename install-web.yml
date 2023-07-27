@@ -1,0 +1,22 @@
+---
+- name: Instalar Apache en servidores RHEL
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Actualizar caché de paquetes
+      yum:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+    - name: Instalar Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Habilitar el servicio de Apache
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
