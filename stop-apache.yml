@@ -2,9 +2,7 @@
 - name: Detener servicio apache
   hosts: web
   become: true
-
     - name: Detener Servicio apache
       systemd:
         name: httpd
         state: stopped
-        enabled: yes
