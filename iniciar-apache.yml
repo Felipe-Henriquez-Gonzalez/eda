@@ -1,0 +1,11 @@
+---
+- name: iniciar apache 
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Habilitar el servicio de Apache
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
