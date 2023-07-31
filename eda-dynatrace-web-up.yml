@@ -1,0 +1,17 @@
+---
+- name: chequeo de status host
+  hosts: all
+  sources:
+    - dynatrace.eda.dt_esa_api:
+        dt_api_host: "https://dyx62030.apps.dynatrace.com" 
+        dt_api_token: "{{ dyna_token }}.
+        delay: 1
+
+  rules:
+    - name: Service http is not runnin on server 
+      condition: event.payload.problemTitle contains "Http monitor global outage"
+      action:
+        run_job_template:
+          name: "iniciar-apache"
+          organization: "Default"
+   
