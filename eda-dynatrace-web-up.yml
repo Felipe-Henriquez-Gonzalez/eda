@@ -1,8 +1,10 @@
 ---
 - name: chequeo de status host
   hosts: all
+  
   sources:
-    - dynatrace.eda.dt_esa_api:
+    - name: alerta dynatrace
+      dynatrace.eda.dt_esa_api:
         dt_api_host: "https://dyx62030.apps.dynatrace.com" 
         dt_api_token: "{{ dyna_token }}.
         delay: 1
